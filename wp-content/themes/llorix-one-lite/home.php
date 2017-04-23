@@ -9,20 +9,20 @@
 ?>
 <?php
 
-//$startTimeString = "2017-03-31 18:00";
-//$startTimeObj = DateTime::createFromFormat('Y-m-d H:i', $startTimeString);
-//$startTime = 0;
-//if(!empty($startTimeString)){
-//    date_default_timezone_set('Europe/Warsaw');
-//    $startTime = strtotime($startTimeString) - time();
-//    $days = floor($startTime/86400);
-//    $hours = floor(($startTime-($days*86400))/3600);
-//    $mins = floor (($startTime-($days*86400)-($hours*3600))/60);
-//    $secs = floor ($startTime-($days*86400)-($hours*3600)-($mins*60));
-//    $hours = sprintf('%02d', $hours);
-//    $mins = sprintf('%02d', $mins);
-//    $secs = sprintf('%02d', $secs);
-//}
+$startTimeString = "2017-04-28 18:00";
+$startTimeObj = DateTime::createFromFormat('Y-m-d H:i', $startTimeString);
+$startTime = 0;
+if(!empty($startTimeString)){
+    date_default_timezone_set('Europe/Warsaw');
+    $startTime = strtotime($startTimeString) - time();
+    $days = floor($startTime/86400);
+    $hours = floor(($startTime-($days*86400))/3600);
+    $mins = floor (($startTime-($days*86400)-($hours*3600))/60);
+    $secs = floor ($startTime-($days*86400)-($hours*3600)-($mins*60));
+    $hours = sprintf('%02d', $hours);
+    $mins = sprintf('%02d', $mins);
+    $secs = sprintf('%02d', $secs);
+}
 
 $args = array(
     'post_type'   => 'matches',
@@ -32,6 +32,14 @@ $args = array(
     'order'         =>'ASC'
 );
 $final = get_posts( $args );
+$args = array(
+    'post_type'   => 'matches',
+    'category_name' =>'olsztyn-polfinal',
+    'posts_per_page'   => 3,
+    'post_status'      => 'private',
+    'order'         =>'ASC'
+);
+$polfinal = get_posts( $args );
 ?>
 <?php
 get_header(); ?>
@@ -80,38 +88,38 @@ $i=0;
         <?php endforeach; ?>
     </div>
     </div>
-<!--    <div>-->
-<!--        <section style="background-image: url('/*/images/tlo.jpg')" id="timer" data-time="*/">-->
-<!--            <div class="container">-->
-<!--                <div class="row">-->
-<!--                    <div class="timer col-xs-12 col-md-8">-->
-<!--                        <div class="timeBlock">-->
-<!--                            <span class="days value">--><?php //echo $days; ?><!--</span>-->
-<!--                            <span class="days text">--><?php //_e('dni');?><!--</span>-->
-<!--                        </div>-->
-<!--                        <div class="separator"></div>-->
-<!--                        <div class="timeBlock">-->
-<!--                            <span class="hours value">--><?php //echo $hours; ?><!--</span>-->
-<!--                            <span class="hours text">--><?php //_e('godzin');?><!--</span>-->
-<!--                        </div>-->
-<!--                        <div class="separator"></div>-->
-<!--                        <div class="timeBlock">-->
-<!--                            <span class="minuts value">--><?php //echo $mins; ?><!--</span>-->
-<!--                            <span class="minuts text">--><?php //_e('minut');?><!--</span>-->
-<!--                        </div>-->
-<!--                        <div class="separator"></div>-->
-<!--                        <div class="timeBlock">-->
-<!--                            <span class="seconds value">--><?php //echo $secs; ?><!--</span>-->
-<!--                            <span class="seconds text">--><?php //_e('sekund');?><!--</span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="col-xs-12 col-md-4">-->
-<!--                        <h2>Pozostało </br>do turnieju</h2>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--    </div>-->
+    <div>
+        <section style="background-image: url('<?php echo get_template_directory_uri()?>/images/tlo.jpg')" id="timer" data-time="*/">
+            <div class="container">
+                <div class="row">
+                    <div class="timer col-xs-12 col-md-8">
+                        <div class="timeBlock">
+                            <span class="days value"><?php echo $days; ?></span>
+                            <span class="days text"><?php _e('dni');?></span>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="timeBlock">
+                            <span class="hours value"><?php echo $hours; ?></span>
+                            <span class="hours text"><?php _e('godzin');?></span>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="timeBlock">
+                            <span class="minuts value"><?php echo $mins; ?></span>
+                            <span class="minuts text"><?php _e('minut');?></span>
+                        </div>
+                        <div class="separator"></div>
+                        <div class="timeBlock">
+                            <span class="seconds value"><?php echo $secs; ?></span>
+                            <span class="seconds text"><?php _e('sekund');?></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <h2>Pozostało </br>do turnieju</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <div class="matches-slider">
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
