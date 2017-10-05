@@ -1,9 +1,9 @@
-<?php $number='14';?>
+<?php $number='2';?>
 <?php foreach ($latest_books as $post): ?>
     <?php $round_val= get_cfc_meta( 'round_number', $post ->ID ); ?>
    <?php if ($round_val[0]['round_number_field']== $number): ?>
         <?php  $meta_values = get_cfc_meta( 'mecze', $post ->ID ); ?>
-            <h3><span>III Liga</span> <span id="matchNumber" data-number="<?php echo $round_val[0]['round_number_field']; ?>"><span class="downRound glyphicon glyphicon-chevron-left"></span><span class="ajaxChangeNumber"><?php echo $round_val[0]['round_number_field']; ?></span>. Kolejka<span style="display: none" class="upRound glyphicon glyphicon-chevron-right"></span></span></h3>
+            <h3><span>III Liga</span> <span id="matchNumber" data-number="<?php echo $round_val[0]['round_number_field']; ?>"><span class="downRound glyphicon glyphicon-chevron-left"></span><span class="ajaxChangeNumber"><?php echo $round_val[0]['round_number_field']; ?></span>. Kolejka<span class="upRound glyphicon glyphicon-chevron-right"></span></span></h3>
             <div id="matchesLoad">
             <?php foreach ($meta_values as $match):  ?>
                 <div class="single-match">

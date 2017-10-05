@@ -23,27 +23,10 @@ if(!empty($startTimeString)){
     $mins = sprintf('%02d', $mins);
     $secs = sprintf('%02d', $secs);
 }
-
-$args = array(
-    'post_type'   => 'matches',
-    'category_name' =>'final_3_liga',
-    'posts_per_page'   => 3,
-    'post_status'      => 'private',
-    'order'         =>'ASC'
-);
-$final = get_posts( $args );
-$args = array(
-    'post_type'   => 'matches',
-    'category_name' =>'olsztyn-polfinal',
-    'posts_per_page'   => 3,
-    'post_status'      => 'private',
-    'order'         =>'ASC'
-);
-$polfinal = get_posts( $args );
 ?>
 <?php
 get_header(); ?>
-<?php include_once("single-matches.php"); ?>
+<?php include_once("single-matches_2017.php"); ?>
 <?php
 $myposts = get_posts( array(
     'category'       => 3,
@@ -88,38 +71,7 @@ $i=0;
         <?php endforeach; ?>
     </div>
     </div>
-    <div>
-        <section style="background-image: url('<?php echo get_template_directory_uri()?>/images/tlo.jpg')" id="timer" data-time="*/">
-            <div class="container">
-                <div class="row">
-                    <div class="timer col-xs-12 col-md-8">
-                        <div class="timeBlock">
-                            <span class="days value"><?php echo $days; ?></span>
-                            <span class="days text"><?php _e('dni');?></span>
-                        </div>
-                        <div class="separator"></div>
-                        <div class="timeBlock">
-                            <span class="hours value"><?php echo $hours; ?></span>
-                            <span class="hours text"><?php _e('godzin');?></span>
-                        </div>
-                        <div class="separator"></div>
-                        <div class="timeBlock">
-                            <span class="minuts value"><?php echo $mins; ?></span>
-                            <span class="minuts text"><?php _e('minut');?></span>
-                        </div>
-                        <div class="separator"></div>
-                        <div class="timeBlock">
-                            <span class="seconds value"><?php echo $secs; ?></span>
-                            <span class="seconds text"><?php _e('sekund');?></span>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <h2>Pozostało </br>do turnieju</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+
     <div class="matches-slider">
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -147,62 +99,26 @@ $i=0;
                                 <div class="slider-score">
                                     <?php if($match['sets_home']!=''){ echo $match['sets_home'].':'.$match['sets_guest']; } else{ echo '-:-';} ?>
                                     <?php if($match['sets_point']): ?> <span>(<?php echo $match['sets_point']; ?>)</span><?php endif; ?>
-                                </div>
-                                <div class="slider-team slider-guest">
-                                    <div>
-                                        <img  src="<?php $url=wp_get_attachment_image_src($match['guest_logo']); ; echo $url[0]; ?>">
-                                        <p><?php  echo $match['team_guest'] ?></p>
+                                    <?php if($match['special_text']): ?>
+                                    <div class="special-text">
+                                         <?php echo $match['special_text']; ?>
                                     </div>
-                                </div>
-                                <div class="slider-title slider-title-left">
-                                    <p class="slider-title-big"><?php echo $round_val[0]['data-meczu']; ?></p>
-                                    <p class="slider-title-small">godzina <?php echo $round_val[0]['godzina-meczu']; ?></p>
-                                </div>
-                            </div>
-                            </div><?php  endif; ?>
-                    <?php  endforeach; ?>
-                <?php  endforeach; ?>
-                <?php  $i=0; ?>
-                <?php foreach ( $final as $post): ?>
-                    <?php  $round_val= get_cfc_meta( 'round_number', $post ->ID ); ?>
-                    <?php  $meta_values = get_cfc_meta( 'mecze', $post ->ID ); ?>
-                    <!--                    <a>-->
-                    <?php foreach ($meta_values as $match): ?>
-                        <?php if(($match['team_home']=='LUMKS Kasztelan Rozprza') || ($match['team_guest']=='LUMKS Kasztelan Rozprza')): ?>
-                        <div class="item  <?php   if($round_val[0]['slider-active']=='true'): ?>active<?php endif; ?>">
-                            <div class="single-item">
-                                <div class="slider-title">
-                                    <p class="slider-title-big">III liga mężczyzn</p>
-                                    <p class="slider-title-small"><?php echo $round_val[0]['round_number_field']; ?> KOLEJKA</p>
-                                </div>
-                                <div class="slider-team">
-                                    <div>
-                                        <img  src="<?php $url=wp_get_attachment_image_src($match['home_logo']); echo $url[0]; ?>">
-                                        <p><?php  echo $match['team_home'] ?></p>
-                                    </div>
-                                </div>
-                                <div class="slider-score">
-                                    <?php if($match['sets_home']!=''){ echo $match['sets_home'].':'.$match['sets_guest']; } else{ echo '-:-';} ?>
-                                    <?php if($match['sets_point']): ?> <span>(<?php echo $match['sets_point']; ?>)</span><?php endif; ?>
-                                </div>
-                                <div class="slider-team slider-guest">
-                                    <div>
-                                        <img  src="<?php $url=wp_get_attachment_image_src($match['guest_logo']); ; echo $url[0]; ?>">
-                                        <p><?php  echo $match['team_guest'] ?></p>
-                                    </div>
-                                </div>
-                                <div class="slider-title slider-title-left">
-                                    <p class="slider-title-big"><?php echo $round_val[0]['data-meczu']; ?></p>
-                                    <?php if($i==0): ?>
-                                    <p class="slider-title-small">godzina <?php echo $round_val[0]['godzina-meczu']; ?></p>
-                                    <?php else: ?>
-                                    <p class="slider-title-small">godzina <?php echo $round_val[0]['godzina-drugiego-meczu']; ?></p>
                                     <?php endif; ?>
+
+                                </div>
+                                <div class="slider-team slider-guest">
+                                    <div>
+                                        <img  src="<?php $url=wp_get_attachment_image_src($match['guest_logo']); ; echo $url[0]; ?>">
+                                        <p><?php  echo $match['team_guest'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="slider-title slider-title-left">
+                                    <p class="slider-title-big"><?php echo $round_val[0]['data-meczu']; ?></p>
+                                    <p class="slider-title-small">godzina <?php echo $round_val[0]['godzina-meczu']; ?></p>
                                 </div>
                             </div>
                             </div><?php  endif; ?>
                     <?php  endforeach; ?>
-                    <?php $i++; ?>
                 <?php  endforeach; ?>
             </div>
 
@@ -240,8 +156,8 @@ $i=0;
                     <tr>
                         <td><?php echo $i; ?></td>
                         <td><?php echo $team['name']; ?></td>
-                        <td><?php echo $team['match_count']; ?></td>
-                        <td><?php echo $team['points']; ?></td>
+                        <td><?php echo $team['match_count'] ? $team['match_count'] : "0"; ?></td>
+                        <td><?php echo $team['points'] ? $team['points'] : "0"; ?></td>
                         <td><?php echo $team['sets_plus']; ?>:<?php echo $team['sets_minus']; ?></td>
                         <td><?php echo $team['points_plus']; ?>:<?php echo $team['points_minus']; ?></td>
                     </tr>
@@ -257,7 +173,7 @@ $i=0;
     ?>
 <?php endforeach; ?>
 <?php
-wp_enqueue_script('ajax-matches',THMJS.'vendor/ajax-matches.js',array(),'2016-12-12',true);
+wp_enqueue_script('ajax-matches',THMJS.'vendor/ajax-matches.js',array(),'2017-10-12',true);
 wp_localize_script( 'ajax-matches', 'ajaxmatches', array(
     'ajaxurl' => admin_url( 'admin-ajax.php' ),
     'templateUrl'=> get_stylesheet_directory_uri()

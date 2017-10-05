@@ -20,10 +20,10 @@ require_once('inc/wp_quicks_walker.php');
 
 /***** CSS i JS *****/
 function bw2015_scripts() {
- if(in_category('galeria')){ wp_enqueue_style('homepage',THMCSS.'homepage.css?v=2016-12-11');}
+ if(in_category('galeria')){ wp_enqueue_style('homepage',THMCSS.'homepage.css?v=2017-10-11');}
     wp_enqueue_style('google-web-fonts','https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet');
     wp_enqueue_style('google-web-fonts-open-sans','https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300&subset=latin,latin-ext');
-    wp_enqueue_style('bootstrap',THMCSS.'bootstrap.css?v=2017-03-18');
+    wp_enqueue_style('bootstrap',THMCSS.'bootstrap.css?v=2017-10-18');
     wp_enqueue_style('animate',THMCSS.'animate.css');
 
 
@@ -312,8 +312,8 @@ function my_matches_ajax() {
     $number =$_POST['number'];
     $args = array(
         'post_type'   => 'matches',
-        'category_name' =>'single_round',
-        'posts_per_page'   => 15,
+        'category_name' =>'single_round_2017',
+        'posts_per_page'   => 20,
         'post_status'      => 'private'
     );
     $latest_books = get_posts( $args );
