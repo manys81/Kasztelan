@@ -76,7 +76,6 @@ $i=0;
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-            <!-- Wrapper for slides -->
             <div class="carousel-inner slider-contener" role="listbox">
                 <?php foreach ( $wynik=array_reverse($latest_books) as $post): ?>
                     <?php $round_val= get_cfc_meta( 'round_number', $post ->ID ); ?>
@@ -122,7 +121,6 @@ $i=0;
                 <?php  endforeach; ?>
             </div>
 
-            <!-- Left and right controls -->
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -152,7 +150,7 @@ $i=0;
                 </tr>
                 <?php $i=0; ?>
                 <?php foreach ($table as $team): ?>
-                    <?php $i++; ?>
+		    <?php $i++; ?>
                     <tr>
                         <td><?php echo $i; ?></td>
                         <td><?php echo $team['name']; ?></td>
@@ -173,29 +171,11 @@ $i=0;
     ?>
 <?php endforeach; ?>
 <?php
-wp_enqueue_script('ajax-matches',THMJS.'vendor/ajax-matches.js',array(),'2017-10-12',true);
+    wp_enqueue_script('ajax-matches',THMJS.'vendor/ajax-matches.js',array(),'2018-01-22',true);
+
 wp_localize_script( 'ajax-matches', 'ajaxmatches', array(
     'ajaxurl' => admin_url( 'admin-ajax.php' ),
     'templateUrl'=> get_stylesheet_directory_uri()
 ));
 ?>
-
-    <!--    <div class="modal fade" id="myModal" role="dialog">-->
-    <!--        <div class="modal-dialog">-->
-    <!---->
-    <!--            <!-- Modal content-->
-    <!--            <div class="modal-content">-->
-    <!--                <div class="modal-body">-->
-    <!--                    --><?php //if (function_exists('vote_poll') && !in_pollarchive()): ?>
-    <!--                        --><?php //get_poll();?>
-    <!--                    --><?php //endif; ?>
-    <!--                </div>-->
-    <!--                <div class="modal-footer">-->
-    <!--                    <button type="button" class="btn btn-default poll-btn" data-dismiss="modal">Zamknij</button>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!---->
-    <!--        </div>-->
-    <!--    </div>-->
-
 <?php get_footer(); ?>

@@ -7,9 +7,9 @@ jQuery(document).ready(function(){
     jQuery(document).on( 'click', '.upRound', function() {
         jQuery('.downRound').show();
         number=number+1;
-        if(number>=5){
+        if(number>=22){
             jQuery(this).hide();
-            number=5;
+            number=22;
         }
         jQuery('.ajaxChangeNumber').html(number);
         ajaxRoundMatches(number);
@@ -37,7 +37,7 @@ function ajaxRoundMatches(number){
             number: number
         },
         success: function( result ) {
-            if(number<5){
+            if(number<22){
                 jQuery('.upRound').show();
             }
             if(number>1){

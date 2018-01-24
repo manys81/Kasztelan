@@ -13,7 +13,7 @@
     include_once("single-matches_2017.php");
 ?>
     <?php $args = array(
-        'category_name' =>'report',
+        'category_name' =>'report_2017',
         'posts_per_page'   => 15,
     );
     $reports = get_posts( $args );

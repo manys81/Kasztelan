@@ -76,24 +76,5 @@ jQuery(document).ready(function(){
         }
 
     });
-    (function(){
-        try {
-            jQuery('#timer').countdown(jQuery('#timer').data('time'), function(event) {
-                if (jQuery('.days.value').text() != event.strftime('%D')) {
-                    jQuery('.days.value').html('<span class="">'+event.strftime('%D')+'</span>');
-                }
-                if(jQuery('.hours.value').text() != event.strftime('%H')){
-                    jQuery('.hours.value').html('<span class="">'+event.strftime('%H')+'</span>');
-                }
-                if(jQuery('.minuts.value').text() != event.strftime('%M')){
-                    jQuery('.minuts.value').html('<span class="">'+event.strftime('%M')+'</span>');
-                }
-                jQuery('.seconds.value').html('<span class="">'+event.strftime('%S')+'</span>');
-            }).on('finish.countdown', function(event) {
-                jQuery('#timer .container').html('<h2 class="text-center animated tada"><strong>Ruszyli!</strong></h2>');
-            });
-        } catch(e) {
-            console.log(e);
-        }
-    })();
+    
 });

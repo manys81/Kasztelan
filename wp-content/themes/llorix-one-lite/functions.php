@@ -29,8 +29,8 @@ function bw2015_scripts() {
 
     wp_enqueue_script('jquery',THMJS.'vendor/jquery-1.11.3.min.js',array(),'1.11.3',true);
     wp_enqueue_script('bootstrap',THMJS.'vendor/bootstrap.min.js',array(),'3.3.5',true);
-    wp_enqueue_script('jquery-countdown',THMJS.'vendor/jquery.countdown.min.js',array(),'2017-01-12',true);
-    wp_enqueue_script('main',THMJS.'main.js',array(),'2016-06-15',true);
+    //wp_enqueue_script('jquery-countdown',THMJS.'vendor/jquery.countdown.min.js',array(),'2017-01-12',true);
+    wp_enqueue_script('main',THMJS.'main.js',array(),'2016-06-16',true);
 }
 add_action('wp_enqueue_scripts','bw2015_scripts');
 
@@ -313,7 +313,7 @@ function my_matches_ajax() {
     $args = array(
         'post_type'   => 'matches',
         'category_name' =>'single_round_2017',
-        'posts_per_page'   => 20,
+        'posts_per_page'   => 25,
         'post_status'      => 'private'
     );
     $latest_books = get_posts( $args );

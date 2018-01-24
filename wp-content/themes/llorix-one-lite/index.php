@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </div>
-            <?php if(in_category('5')): ?>
+            <?php if(in_category('5') || in_category('38')): ?>
                 <div class="post-page-report">
                     <div class="container">
                         <div class="match-raport-main">

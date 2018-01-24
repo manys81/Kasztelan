@@ -30,7 +30,7 @@ $news = new WP_Query(
             <a target="_blank" href="http://gimnazjum-rozprza.pl"><img  src="<?php echo get_template_directory_uri (); ?>/images/jan_pawel1.png" height="70px"></a>
            <a target="_blank"  href="http://rozprza.pl"><img  src="<?php echo get_template_directory_uri (); ?>/images/gmina1.png" height="70px"></a>
            <a target="_blank" href="http://www.elanda.pl"><img  src="<?php echo get_template_directory_uri (); ?>/images/logo_elanda.png" width="100px" ></a>
-           <a target="_blank" href="https://www.facebook.com/djorson.michalorski"><img  src="<?php echo get_template_directory_uri (); ?>/images/djorson.png" width="100px" ></a>
+           <a target="_blank" href="http://www.belchatow.spoleczna.pl/"><img  src="<?php echo get_template_directory_uri (); ?>/images/logo_san.png" width="100px" ></a>
         </div>
     </div>
     <div class="social-media">
@@ -46,6 +46,5 @@ $news = new WP_Query(
 </footer>
 
 <?php wp_footer(); ?>
-
 </body>
 </html>

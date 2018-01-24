@@ -21,7 +21,7 @@ foreach ($teams as $team){
 $args = array(
     'post_type'   => 'matches',
     'category_name' =>'single_round_2017',
-    'posts_per_page'   => 20,
+    'posts_per_page'   => 25,
     'post_status'      => 'private'
 );
 $latest_books = get_posts( $args );
