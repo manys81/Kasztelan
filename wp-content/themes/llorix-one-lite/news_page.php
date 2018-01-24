@@ -14,11 +14,13 @@
 
             <div class="row equal-heights">
                 <?php
-                $posts=get_posts(array(
-                    'posts_per_page' => '50'
-                ));
+                $temp = $wp_query;
+                $wp_query = null;
+                $wp_query = new WP_Query();
+                $wp_query->query('showposts=15&paged='.$paged);
+
+                while ($wp_query->have_posts()) : $wp_query->the_post();
                 ?>
-                <?php foreach($posts as $i=>$post) : ?>
                     <?php $fields = get_fields($post->ID);?>
                     <div class="col-md-4 col-sm-6 animated fadeInUp">
                         <a class='single-article-link' href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
@@ -34,7 +36,14 @@
                         </a>
 
                     </div>
-                <?php endforeach; ?>
+
+                <?php endwhile; ?>
+                <div id="pagination">
+                    <div><?php previous_posts_link( 'Poprzednie' ); ?></div>
+                    <div><?php next_posts_link( 'Następne' ); ?></div>
+                </div>
+
+
             </div>
         </div>
 
@@ -42,5 +51,8 @@
 
 <?php endif; ?>
 
-
+<?php
+$wp_query = null;
+$wp_query = $temp;  // Reset
+?>
 <?php get_footer(); ?>
