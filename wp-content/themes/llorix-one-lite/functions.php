@@ -23,7 +23,7 @@ function bw2015_scripts() {
  if(in_category('galeria')){ wp_enqueue_style('homepage',THMCSS.'homepage.css?v=2017-10-11');}
     wp_enqueue_style('google-web-fonts','https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet');
     wp_enqueue_style('google-web-fonts-open-sans','https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300&subset=latin,latin-ext');
-    wp_enqueue_style('bootstrap',THMCSS.'bootstrap.css?v=2017-10-18');
+    wp_enqueue_style('bootstrap',THMCSS.'bootstrap.css?v=2018-01-18');
     wp_enqueue_style('animate',THMCSS.'animate.css');
 
 

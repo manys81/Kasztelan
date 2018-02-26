@@ -39,8 +39,8 @@
 
                 <?php endwhile; ?>
                 <div id="pagination">
-                    <div><?php previous_posts_link( 'Poprzednie' ); ?></div>
-                    <div><?php next_posts_link( 'Następne' ); ?></div>
+                    <div><?php previous_posts_link( 'Pokaż nowsze' ); ?></div>
+                    <div><?php next_posts_link( 'Pokaż starsze' ); ?></div>
                 </div>
 
 
